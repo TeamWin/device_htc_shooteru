@@ -18,6 +18,10 @@
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/gps.conf:system/etc/gps.conf
 
+# WiMAX Property setting for checking WiMAX interface
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.wimax.interface=uwbr0
+
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase=android-htc \
