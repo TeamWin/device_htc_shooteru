@@ -87,12 +87,12 @@ adb pull /system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/lib/hw/copybit.msm8660.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/hw/gps.shooter.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/hw/gps.shooteru.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/hw/gralloc.default.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/hw/gralloc.msm8660.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/hw/lights.msm8660.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/hw/overlay.default.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/hw/sensors.shooter.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/hw/sensors.shooteru.so ../../../vendor/htc/$DEVICE/proprietary
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -187,11 +187,11 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/vpimg:/system/etc/vpimg \\
     vendor/htc/__DEVICE__/proprietary/gralloc.msm8660.so:/system/lib/hw/gralloc.msm8660.so \\
     vendor/htc/__DEVICE__/proprietary/copybit.msm8660.so:/system/lib/hw/copybit.msm8660.so \\
-    vendor/htc/__DEVICE__/proprietary/gps.shooter.so:/system/lib/hw/gps.shooter.so \\
+    vendor/htc/__DEVICE__/proprietary/gps.shooteru.so:/system/lib/hw/gps.shooteru.so \\
     vendor/htc/__DEVICE__/proprietary/gralloc.default.so:/system/lib/hw/gralloc.default.so \\
     vendor/htc/__DEVICE__/proprietary/lights.msm8660.so:/system/lib/hw/lights.msm8660.so \\
     vendor/htc/__DEVICE__/proprietary/overlay.default.so:/system/lib/hw/overlay.default.so \\
-    vendor/htc/__DEVICE__/proprietary/sensors.shooter.so:/system/lib/hw/sensors.shooter.so
+    vendor/htc/__DEVICE__/proprietary/sensors.shooteru.so:/system/lib/hw/sensors.shooteru.so
 EOF
 
 ./setup-makefiles.sh
