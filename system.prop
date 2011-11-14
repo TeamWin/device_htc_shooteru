@@ -1,7 +1,7 @@
 # system.prop for shooter
 #
 
-ro.sf.lcd_density=240
+ro.sf.lcd_density=160
 
 debug.fb.rgb565 = 0
 
