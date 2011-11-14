@@ -79,6 +79,8 @@ TARGET_HARDWARE_3D := true
 # Define Prebuilt kernel locations
 TARGET_PREBUILT_KERNEL := device/htc/shooter/kernel
 
+BOARD_HAVE_SQN_WIMAX := true
+
 # cat /proc/emmc
 # dev:        size     erasesize name
 # mmcblk0p31: 000ffa00 00000200 "misc"
