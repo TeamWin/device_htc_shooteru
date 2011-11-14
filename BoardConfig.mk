@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/htc/shooter/BoardConfigVendor.mk
+-include vendor/htc/shooteru/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 
@@ -14,7 +14,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_BOOTLOADER_BOARD_NAME := shooter
+TARGET_BOOTLOADER_BOARD_NAME := shooteru
 TARGET_HAVE_HDMI_OUT := true
 TARGET_USES_OVERLAY := true
 TARGET_NO_RADIOIMAGE := true
@@ -42,7 +42,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Define egl.cfg location
-BOARD_EGL_CFG := device/htc/shooter/egl.cfg
+BOARD_EGL_CFG := device/htc/shooteru/egl.cfg
 
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
@@ -59,10 +59,10 @@ BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BOARD_USE_BROADCOM_FM_VOLUME_HACK := true
 
-TARGET_BOOTLOADER_BOARD_NAME := shooter
+TARGET_BOOTLOADER_BOARD_NAME := shooteru
 
 BOARD_USE_NEW_LIBRIL_HTC := true
-TARGET_PROVIDES_LIBRIL := vendor/htc/shooter/proprietary/libril.so
+TARGET_PROVIDES_LIBRIL := vendor/htc/shooteru/proprietary/libril.so
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x40400000
@@ -70,7 +70,7 @@ BOARD_PAGE_SIZE := 2048
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := shooter
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := shooteru
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 TARGET_HAVE_HDMI_OUT := true
@@ -104,5 +104,5 @@ BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_CUSTOM_GRAPHICS:= ../../../device/htc/shooter/graphics.c
+BOARD_CUSTOM_GRAPHICS:= ../../../device/htc/shooteru/graphics.c
 BOARD_USES_RECOVERY_CHARGEMODE := true

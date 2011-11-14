@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=shooter
+DEVICE=shooteru
 
 mkdir -p ../../../vendor/htc/$DEVICE/proprietary
 
@@ -119,7 +119,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libacdbmapper.so:obj/lib/libacdbmapper.so \\
     vendor/htc/__DEVICE__/proprietary/libril.so:obj/lib/libril.so
 
-# All the blobs necessary for shooter
+# All the blobs necessary for shooteru
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/agps_rm:/system/etc/agps_rm \\
     vendor/htc/__DEVICE__/proprietary/awb_camera:/system/bin/awb_camera \\
