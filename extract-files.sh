@@ -41,7 +41,6 @@ adb pull /system/bin/ser2net ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/sound8x60 ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/thermald ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/qmuxd ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/bin/usbnet ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/xbin/wireless_modem ../../../vendor/htc/$DEVICE/proprietary
 
@@ -55,6 +54,7 @@ adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/htc/$DEVICE/pr
 
 adb pull /system/lib/libacdbloader.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libacdbmapper.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary
@@ -84,6 +84,7 @@ adb pull /system/lib/libqdp.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libqmi.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libqmiservices.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary
+
 adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/lib/hw/copybit.msm8660.so ../../../vendor/htc/$DEVICE/proprietary
@@ -114,10 +115,11 @@ adb pull /system/lib/hw/sensors.shooteru.so ../../../vendor/htc/$DEVICE/propriet
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudio.so:obj/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbloader.so:obj/lib/libacdbloader.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbmapper.so:obj/lib/libacdbmapper.so \\
-    vendor/htc/__DEVICE__/proprietary/libril.so:obj/lib/libril.so
+    vendor/htc/__DEVICE__/proprietary/libril.so:obj/lib/libril.so \\
 
 # All the blobs necessary for shooteru
 PRODUCT_COPY_FILES += \\
@@ -145,7 +147,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/mpdecision:/system/bin/mpdecision \\
     vendor/htc/__DEVICE__/proprietary/thermald:/system/bin/thermald \\
     vendor/htc/__DEVICE__/proprietary/qmuxd:/system/bin/qmuxd \\
-    vendor/htc/__DEVICE__/proprietary/usbnet:/system/bin/usbnet \\
     vendor/htc/__DEVICE__/proprietary/wireless_modem:/system/xbin/wireless_modem \\
     vendor/htc/__DEVICE__/proprietary/agps_rm:/system/etc/agps_rm \\
     vendor/htc/__DEVICE__/proprietary/libEGL_adreno200.so:/system/lib/egl/libEGL_adreno200.so \\
@@ -157,6 +158,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libOmxVenc.so:/system/lib/libOmxVenc.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbloader.so:/system/lib/libacdbloader.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbmapper.so:/system/lib/libacdbmapper.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudio.so:/system/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\
     vendor/htc/__DEVICE__/proprietary/libdiag.so:/system/lib/libdiag.so \\
