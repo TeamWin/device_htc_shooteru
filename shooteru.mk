@@ -114,6 +114,8 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/AudioBTID.csv:system/etc/AudioBTID.csv \
     device/htc/shooteru/dsp/CodecDSPID.txt:system/etc/CodecDSPID.txt \
     device/htc/shooteru/dsp/CodecDSPID_WB.txt:system/etc/CodecDSPID_WB.txt \
+    device/htc/shooteru/dsp/IOTable.txt:system/etc/IOTable.txt \
+    device/htc/shooteru/dsp/IOTable_NEL.txt:system/etc/IOTable_NEL.txt \
     device/htc/shooteru/dsp/TPA2051_CFG.csv:system/etc/TPA2051_CFG.csv \
     device/htc/shooteru/dsp/TPA2051_CFG_XC.csv:system/etc/TPA2051_CFG_XC.csv \
     device/htc/shooteru/dsp/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
