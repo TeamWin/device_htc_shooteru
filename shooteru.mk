@@ -65,6 +65,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
+# gsm config xml file
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/voicemail-conf.xml:system/etc/voicemail-conf.xml
+
 #PRODUCT_PACKAGES += \
 #    gps.shooteru \
 #    librs_jni \
