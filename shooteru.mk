@@ -92,9 +92,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/keylayout/shooteru-keypad.kl:system/usr/keylayout/shooteru-keypad.kl \
     device/htc/shooteru/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
     device/htc/shooteru/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
+
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/firmware/BCM4329B1_002.002.023.0589.0632.hcd:system/etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd \
+    device/htc/shooteru/firmware/BCM4329B1_002.002.023.0831.0841.hcd:system/etc/firmware/BCM4329B1_002.002.023.0831.0841.hcd \
     device/htc/shooteru/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
     device/htc/shooteru/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
     device/htc/shooteru/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
@@ -139,8 +140,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/modules/spidev.ko:system/lib/modules/spidev.ko  \
     device/htc/shooteru/modules/lcd.ko:system/lib/modules/lcd.ko \
     device/htc/shooteru/modules/wimaxdbg.ko:system/lib/modules/wimaxdbg.ko 
-
-
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
