@@ -151,12 +151,18 @@ PRODUCT_COPY_FILES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# This is a high density device with more memory, so larger vm heaps for it.
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapsize=32m
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1
+
 # device uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
 
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/vold.fstab:system/etc/vold.fstab
-
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
