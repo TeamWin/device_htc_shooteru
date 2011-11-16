@@ -163,6 +163,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
+# Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.umsdirtyratio=20
+
 DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
 
 
