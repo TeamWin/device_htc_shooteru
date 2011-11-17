@@ -184,8 +184,12 @@
          specified -->
     <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
 
-    <bool name="config_animateScreenLights">false</bool>
     
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_enableScreenAnimation">true</bool>
+    <bool name="config_enableScreenOnAnimation">true</bool>
+    <bool name="config_enableScreenOffAnimation">true</bool>
+
     <!-- Set and Unsets WiMAX -->
     <bool name="config_wimaxEnabled">true</bool>
     <!-- Location of the wimax framwork jar location -->
