@@ -150,9 +150,9 @@ service dhcpcd /system/bin/dhcpcd -ABKL eth0
     disabled
     oneshot
 
-service dhcpWimax /system/bin/dhcpcd -ABKL -f /etc/wimax/dhcp/wimaxDhcp.conf wimax0
-    disabled
-    oneshot
+#service dhcpWimax /system/bin/dhcpcd -ABKL -f /etc/wimax/dhcp/wimaxDhcp.conf wimax0
+#    disabled
+#    oneshot
 
 
 # bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
@@ -220,76 +220,76 @@ on property:service.modem.enable=0
 on property:ro.emmc=1
     start rmt_storage
 
-service sequansd /system/bin/sequansd /etc/wimax/sequansd/sequansd_app.xml
-    user root
-    group root inet
-    socket sequansd_0 dgram 660 root root
-    disabled
-    oneshot
+#service sequansd /system/bin/sequansd /etc/wimax/sequansd/sequansd_app.xml
+#    user root
+#    group root inet
+#    socket sequansd_0 dgram 660 root root
+#    disabled
+#    oneshot
 
-service wimaxDhcpRelease /system/bin/wimaxDhcpRelease
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxDhcpRelease /system/bin/wimaxDhcpRelease
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxDhcpRenew /system/bin/wimaxDhcpRenew
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxDhcpRenew /system/bin/wimaxDhcpRenew
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxAddRoute /system/bin/wimaxAddRoute
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxAddRoute /system/bin/wimaxAddRoute
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxDumpLogcat /system/bin/wimaxDumpLogcat /data/wimax/log
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxDumpLogcat /system/bin/wimaxDumpLogcat /data/wimax/log
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxDumpKmsg /system/bin/wimaxDumpKmsg /data/wimax/log
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxDumpKmsg /system/bin/wimaxDumpKmsg /data/wimax/log
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxDumpLastKmsg /system/bin/wimaxDumpLastKmsg /data/wimax/log
-    user root
-    group root
-    disabled
-    oneshot
+#service wimaxDumpLastKmsg /system/bin/wimaxDumpLastKmsg /data/wimax/log
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wmxCfgItf /system/bin/wimaxConfigInterface
-    user root
-    group root
-    disabled
-    oneshot
+#service wmxCfgItf /system/bin/wimaxConfigInterface
+#    user root
+#    group root
+#    disabled
+#    oneshot
 
-service wimaxDaemon /system/bin/wimaxDaemon
-   user root
-   group root
+#service wimaxDaemon /system/bin/wimaxDaemon
+#   user root
+#   group root
+#
+## wimax_mtd daemon
+#service wimax_mtd /system/bin/wimax_mtd
+#   user root
+#   group root
+#   oneshot
 
-# wimax_mtd daemon
-service wimax_mtd /system/bin/wimax_mtd
-   user root
-   group root
-   oneshot
+## setWMXPropd daemon
+#service setWMXPropd /system/bin/setWiMAXPropDaemond
+#    user root
+#    group root
+#    oneshot
 
-# setWMXPropd daemon
-service setWMXPropd /system/bin/setWiMAXPropDaemond
-    user root
-    group root
-    oneshot
-
-# getWMXPropd daemon
-service getWMXPropd /system/bin/getWiMAXPropDaemond
-    user root
-    group root
-    oneshot
+## getWMXPropd daemon
+#service getWMXPropd /system/bin/getWiMAXPropDaemond
+#    user root
+#    group root
+#    oneshot
 
 service dmagent /system/bin/dmagent -N -P19 -VSY
     socket dmagent stream 660 root radio
