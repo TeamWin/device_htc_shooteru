@@ -21,10 +21,11 @@ loglevel 3
     export LOOP_MOUNTPOINT /mnt/obb
     export SD_EXT_DIRECTORY /sd-ext
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/core-junit.jar #:/system/framework/com.htc.commonctrl.jar:/system/framework/com.htc.framework.jar:/system/framework/com.htc.android.pimlib.jar:/system/framework/com.htc.android.easopen.jar:/system/framework/com.scalado.util.ScaladoUtil.jar:/system/framework/com.orange.authentication.simcard.jar:/system/framework/android.supl.jar
+    export TERMINFO /system/etc/terminfo
 
 # Backward compatibility
     symlink /system/etc /etc
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    symlink /sys/kernel/debug /d
 
 # Right now vendor lives on the same filesystem as system,
 # but someday that may change.
@@ -45,7 +46,7 @@ loglevel 3
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0771 system cache
-    mkdir /config 0500 root root
+#    mkdir /config 0500 root root
 
     # Directory for putting things only root should see.
     mkdir /mnt/secure 0700 root root
@@ -61,14 +62,13 @@ loglevel 3
     mkdir /mnt/asec  0700 root system
     mount tmpfs tmpfs /mnt/asec mode=0755,gid=1000
 
+    mkdir /sd-ext 0771 system system
+
     # Filesystem image public mount points.
     mkdir /mnt/obb 0700 root system
     mount tmpfs tmpfs /mnt/obb mode=0755,gid=1000
 
-    mkdir /sd-ext 0771 system system
-
-    #mkdir /app-cache 0700 root system
-    #mount tmpfs tmpfs /app-cache size=8m,mode=0755,gid=1000
+    mount rootfs rootfs / ro remount
 
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
@@ -98,25 +98,18 @@ loglevel 3
     # 5.0 %
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
 
-on fs
 # mount mtd partitions
     # Mount /system rw first to give the filesystem a chance to save a checkpoint
-    mount yaffs2 mtd@system /system
+#    mount yaffs2 mtd@system /system
     mount yaffs2 mtd@system /system ro remount
-    mount yaffs2 mtd@userdata /data nosuid nodev
-    mount yaffs2 mtd@cache /cache nosuid nodev
-
-on post-fs
-    # once everything is setup, no need to modify /
-    mount rootfs rootfs / ro remount
 
     # We chown/chmod /data again so because mount is run as root + defaults
     chown system system /data
     chmod 0771 /data
 
     # Mount compressed filesystems
-    mount squashfs loop@/system/lib/modules/modules.sqf /system/lib/modules ro
-    mount squashfs loop@/system/xbin/xbin.sqf /system/xbin ro
+    #mount squashfs loop@/system/lib/modules/modules.sqf /system/lib/modules ro
+    #mount squashfs loop@/system/xbin/xbin.sqf /system/xbin ro
 
     # Create dump dir and collect dumps.
     # Do this before we mount cache so eventually we can use cache for
@@ -138,8 +131,9 @@ on post-fs
     write /proc/apanic_console 1
 
     # Same reason as /data above
+    mount yaffs2 mtd@cache /cache nosuid nodev
     chown system cache /cache
-    chmod 0770 /cache
+    chmod 0771 /cache
 
     # This may have been created by the recovery system with odd permissions
     chown system cache /cache/recovery
@@ -174,15 +168,8 @@ on post-fs
     mkdir /data/app-private 0771 system system
     mkdir /data/app 0771 system system
     mkdir /data/property 0700 root root
-    #copy /system/etc/adreno_config.txt /data/local/tmp/adreno_config.txt
-
-    # DRMv1 rights storage
-    symlink /data/local /data/drm
-    mkdir /data/local/rights 0774 shell shell
-    chown shell shell /data/drm
-
-
-    mkdir /cache/download 0771 system cache    
+    
+    mkdir /cache/download 0771 system cache 
 
     # create dalvik-cache and double-check the perms
     mkdir /data/dalvik-cache 0771 system system
@@ -203,12 +190,17 @@ on post-fs
     chown root root /cache/lost+found
     chmod 0770 /cache/lost+found
     
-    # HTC add: for customization wizard folder
-    mkdir /data/data/cw 0777 root root
+    # allow net_raw to have access to /dev/socket directory
+    chown root net_raw /dev/socket
+    chmod 0775 /dev/socket
 
-    # HTC add: double check the perms of /data/data for already existed case
-    chown system system /data/data
-    chmod 0771 /data/data
+    # allow system to modify cpufreq control files
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown root system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 on boot
 # basic network init
@@ -379,8 +371,8 @@ on boot
     chmod 0660 /dev/diag_arm9
     chmod 0660 /dev/btdiag
 
-# Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    # Define TCP buffer sizes for various networks
+    # ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.wifi    4095,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.hsdpa   4094,87380,393216,4096,16384,110208
@@ -389,12 +381,17 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,393216,4096,8760,11680
     setprop net.tcp.buffersize.lte     4094,87380,196608,4096,16384,196608
     setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
-    setprop net.tcp.buffersize.wimax   4096,221184,524288,4096,16384,110208
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  262144
     write /proc/sys/net/core/wmem_max  262144
+
+    # Include extra init file
+    import /system/etc/init.local.rc
+
+    # Run sysinit
+    exec /system/bin/sysinit
 
     class_start default
 
@@ -438,23 +435,15 @@ service vold /system/bin/vold
 
 service netd /system/bin/netd
     socket netd stream 0660 root system
-    #socket dnsproxyd stream 0660 root inet
+    socket dnsproxyd stream 0660 root inet
 
 service debuggerd /system/bin/debuggerd
 
 service ril-daemon /system/bin/rild
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
-    socket rild-htc stream 660 radio system
-    socket rild-htc-dmagent stream 660 radio system
-    socket rild-htc-simapi stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_rw
-
-service ril-ims-daemon /system/bin/rild_ims
-    socket rild-ims stream 660 root radio
-    user root
-    group radio cache inet misc audio
+    group radio cache inet misc system audio sdcard_rw net_admin net_raw
 
 service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
     socket zygote stream 666
@@ -466,14 +455,14 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
 service media /system/bin/mediaserver
     user media
     group system audio camera graphics inet net_bt net_bt_admin net_raw  qcom_oncrpc
-	ioprio rt 4
+    ioprio rt 4
 
-service fusermount /system/bin/fusermount -u /data/htcfs
-    disabled
-    oneshot
+#service fusermount /system/bin/fusermount -u /data/htcfs
+#    disabled
+#    oneshot
 
-service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
-    onrestart restart fusermount
+#service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
+#    onrestart restart fusermount
 
 service bootanim /system/bin/bootanimation
     user graphics
@@ -569,10 +558,6 @@ service charging /system/bin/charging
     disabled
     oneshot
 
-#service post-boot /system/bin/sh /system/etc/init.post_boot.sh
-#    user root
-#    oneshot
-
 #on property:crypto.driver.load=1
 #     insmod /system/lib/modules/qce.ko
 #     insmod /system/lib/modules/qcedev.ko
@@ -580,4 +565,3 @@ service charging /system/bin/charging
 #on property:crypto.driver.load=0
 #     exec /system/bin/rmmod qcedev.ko
 #     exec /system/bin/rmmod qce.ko
-
