@@ -78,7 +78,7 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
-    libaudio \
+#    libaudio \
     com.android.future.usb.accessory
 
 # Keylayouts
