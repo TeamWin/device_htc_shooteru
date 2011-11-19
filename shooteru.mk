@@ -139,10 +139,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
     device/htc/shooteru/modules/sequans_sdio.ko:system/lib/modules/sequans_sdio.ko \
-    device/htc/shooteru/modules/wimaxuart.ko:system/lib/modules/wimaxuart.ko \
     device/htc/shooteru/modules/spidev.ko:system/lib/modules/spidev.ko  \
     device/htc/shooteru/modules/lcd.ko:system/lib/modules/lcd.ko \
-    device/htc/shooteru/modules/wimaxdbg.ko:system/lib/modules/wimaxdbg.ko 
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
