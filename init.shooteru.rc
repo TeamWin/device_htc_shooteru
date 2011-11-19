@@ -57,7 +57,7 @@ on init
     chown root root /devlog
     chmod 0700 /devlog
 
-	mount rootfs rootfs / remount
+    mount rootfs rootfs / remount
 
     #for CIQ ipc
     mkdir /app-cache/ciq 0711 root system
@@ -273,17 +273,17 @@ on property:init.svc.bootanim=stopped
     start thermald
     start mpdecision
 
-service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
-    user root
-    disabled
-    oneshot
-    ioprio idle 0
+#service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
+#    user root
+#    disabled
+#    oneshot
+#    ioprio idle 0
 
-service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
-    user root
-    disabled
-    oneshot
-    ioprio idle 0
+#service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
+#    user root
+#    disabled
+#    oneshot
+#    ioprio idle 0
 
 service 3d_camera /system/bin/3D_calibration
     user root
