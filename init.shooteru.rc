@@ -273,17 +273,17 @@ on property:init.svc.bootanim=stopped
     start thermald
     start mpdecision
 
-#service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
-#    user root
-#    disabled
-#    oneshot
-#    ioprio idle 0
+service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
+    user root
+    disabled
+    oneshot
+    ioprio idle 0
 
-#service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
-#    user root
-#    disabled
-#    oneshot
-#    ioprio idle 0
+service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
+    user root
+    disabled
+    oneshot
+    ioprio idle 0
 
 service 3d_camera /system/bin/3D_calibration
     user root
