@@ -69,7 +69,7 @@ loglevel 3
     mount tmpfs tmpfs /mnt/obb mode=0755,gid=1000
     mount rootfs rootfs / rw remount
        
-    chmod 4755 /system/xbin/su
+    chmod 6755 /system/xbin/su
 
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
