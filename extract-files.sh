@@ -60,6 +60,7 @@ adb pull /system/lib/libaudcalwb.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libaudcal_nel.so ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/lib/libaudioalsa.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/libaudiopolicy.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdll.so ../../../vendor/htc/$DEVICE/proprietary
@@ -167,6 +168,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libaudcalwb.so:/system/lib/libaudcalwb.so \\
     vendor/htc/__DEVICE__/proprietary/libaudcal_nel.so:/system/lib/libaudcal_nel.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudiopolicy.so:/system/lib/libaudiopolicy.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\
     vendor/htc/__DEVICE__/proprietary/libdiag.so:/system/lib/libdiag.so \\
     vendor/htc/__DEVICE__/proprietary/libdll.so:/system/lib/libdll.so \\
