@@ -33,8 +33,7 @@ WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/firmware/fw_bcm4329.bi
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
 # Audio 
-BOARD_USES_GENERIC_AUDIO := false
-BOARD_PREBUILT_LIBAUDIO := true
+BOARD_PREBUILT_LIBAUDIO := false
 #HAVE_HTC_AUDIO_DRIVER := true
 
 #Bluetooth
