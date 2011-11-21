@@ -32,9 +32,9 @@ WIFI_DRIVER_FW_AP_PATH      := "/system/etc/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
-# Audio 
-BOARD_PREBUILT_LIBAUDIO := false
-#HAVE_HTC_AUDIO_DRIVER := true
+# Audio
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_PREBUILT_LIBAUDIO := true
 
 #Bluetooth
 BOARD_HAVE_BLUETOOTH := true
