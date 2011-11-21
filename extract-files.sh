@@ -38,7 +38,6 @@ adb pull /system/bin/netsharing ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/rild ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/rmt_storage ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/ser2net ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/bin/sound8x60 ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/thermald ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/qmuxd ../../../vendor/htc/$DEVICE/proprietary
 
@@ -54,13 +53,8 @@ adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/htc/$DEVICE/pr
 
 adb pull /system/lib/libacdbloader.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libacdbmapper.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libaudcal.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libaudcalwb.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libaudcal_nel.so ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/lib/libaudioalsa.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libaudiopolicy.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdll.so ../../../vendor/htc/$DEVICE/proprietary
@@ -120,7 +114,6 @@ adb pull /system/lib/hw/sensors.shooteru.so ../../../vendor/htc/$DEVICE/propriet
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudio.so:obj/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:obj/lib/libaudioalsa.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbloader.so:obj/lib/libacdbloader.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbmapper.so:obj/lib/libacdbmapper.so \\
@@ -147,7 +140,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\
     vendor/htc/__DEVICE__/proprietary/rild:/system/bin/rild \\
     vendor/htc/__DEVICE__/proprietary/ser2net:/system/bin/ser2net \\
-    vendor/htc/__DEVICE__/proprietary/sound8x60:/system/bin/sound8x60 \\
     vendor/htc/__DEVICE__/proprietary/load-modem.sh:/system/bin/load-modem.sh \\
     vendor/htc/__DEVICE__/proprietary/mpdecision:/system/bin/mpdecision \\
     vendor/htc/__DEVICE__/proprietary/thermald:/system/bin/thermald \\
@@ -163,12 +155,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libOmxVenc.so:/system/lib/libOmxVenc.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbloader.so:/system/lib/libacdbloader.so \\
     vendor/htc/__DEVICE__/proprietary/libacdbmapper.so:/system/lib/libacdbmapper.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudio.so:/system/lib/libaudio.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudcal.so:/system/lib/libaudcal.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudcalwb.so:/system/lib/libaudcalwb.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudcal_nel.so:/system/lib/libaudcal_nel.so \\
     vendor/htc/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
-    vendor/htc/__DEVICE__/proprietary/libaudiopolicy.so:/system/lib/libaudiopolicy.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:/system/lib/libcamera.so \\
     vendor/htc/__DEVICE__/proprietary/libdiag.so:/system/lib/libdiag.so \\
     vendor/htc/__DEVICE__/proprietary/libdll.so:/system/lib/libdll.so \\
