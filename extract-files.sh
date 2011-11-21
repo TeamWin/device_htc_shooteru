@@ -53,7 +53,6 @@ adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/htc/$DEVICE/pr
 
 adb pull /system/lib/libacdbloader.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libacdbmapper.so ../../../vendor/htc/$DEVICE/proprietary
-
 adb pull /system/lib/libaudioalsa.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary
@@ -83,7 +82,6 @@ adb pull /system/lib/libqdp.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libqmi.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libqmiservices.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary
-
 adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
 
 adb pull /system/lib/hw/copybit.msm8660.so ../../../vendor/htc/$DEVICE/proprietary
