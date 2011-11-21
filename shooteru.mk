@@ -19,35 +19,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-htc \
-    ro.com.google.locationfeatures=1 \
-    ro.com.google.networklocation=1 \
-    ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y
-
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/init.rc:root/init.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
-
-## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
-
-## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.com.google.clientidbase=android-sprint-us \
-	ro.com.google.locationfeatures=1 \
-	ro.cdma.home.operator.numeric=310120 \
-	ro.cdma.home.operator.alpha=Sprint \
-	ro.setupwizard.enable_bypass=1 \
-	ro.media.dec.jpeg.memcap=20000000 \
-	dalvik.vm.lockprof.threshold=500 \
-	dalvik.vm.dexopt-flags=m=y \
-	ro.opengles.version=131072
-
-DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
@@ -60,6 +35,25 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+
+## (2) Also get non-open-source GSM-specific aspects if available
+$(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
+
+## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-htc \
+    ro.com.google.locationfeatures=1 \
+    ro.com.google.networklocation=1 \
+    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.lockprof.threshold=500 \
+    dalvik.vm.dexopt-flags=m=y
+    ro.opengles.version=131072
+
+# Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.umsdirtyratio=20
+
+DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
 
 # gsm config xml file
 PRODUCT_COPY_FILES += \
@@ -133,7 +127,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
-    device/htc/shooteru/prebuilt/snd3254:system/bin/snd3254
 
 # Wifi Module
 PRODUCT_COPY_FILES += \
@@ -163,10 +156,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
-# Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vold.umsdirtyratio=20
-
 DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
 
 
@@ -179,16 +168,16 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+# stuff common to all HTC phones
+$(call inherit-product, device/htc/common/common.mk)
+
+$(call inherit-product, build/target/product/full_base.mk)
+
 # media profiles and capabilities spec
 $(call inherit-product, device/htc/shooteru/media_a1026.mk)
 
 # htc audio settings
 $(call inherit-product, device/htc/shooteru/media_htcaudio.mk)
-
-# stuff common to all HTC phones
-$(call inherit-product, device/htc/common/common.mk)
-
-$(call inherit-product, build/target/product/full_base.mk)
 
 PRODUCT_NAME := full_shooteru
 PRODUCT_DEVICE := shooteru
