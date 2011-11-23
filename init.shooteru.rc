@@ -300,3 +300,5 @@ on property:ro.build.tags=test-keys
 on property:ro.build.tags=release-keys
     start htc_ebdlogd_rel
 
+service fmradio /system/bin/fmradioserver
+    group bluetooth net_bt_admin
