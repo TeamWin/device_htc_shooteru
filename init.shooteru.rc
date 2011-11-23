@@ -149,8 +149,6 @@ service dhcpcd /system/bin/dhcpcd -ABKL eth0
 service netd /system/bin/netd
    socket dnsproxyd stream 0660 root inet
 
-service iprenew_eth0 /system/bin/dhcpcd -n
-
 # bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
