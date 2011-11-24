@@ -131,9 +131,10 @@ PRODUCT_COPY_FILES += \
 # Wifi Module
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
-    device/htc/shooteru/modules/sequans_sdio.ko:system/lib/modules/sequans_sdio.ko \
-    device/htc/shooteru/modules/spidev.ko:system/lib/modules/spidev.ko  \
-    device/htc/shooteru/modules/lcd.ko:system/lib/modules/lcd.ko \
+    device/htc/shooteru/modules/kineto_gan.ko:system/lib/modules/kineto_gan.ko \
+    device/htc/shooteru/modules/nls_utf8.ko:system/lib/modules/nls_utf8.ko  \
+    device/htc/shooteru/modules/tun.ko:system/lib/modules/tun.ko \
+    device/htc/shooteru/modules/cifs.ko:system/lib/modules/cifs.ko \
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
