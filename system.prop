@@ -75,7 +75,7 @@ ro.com.android.dataroaming=false
 ro.config.ringtone=Playa.ogg
 ro.config.notification_sound=Cricket.ogg
 ro.config.alarm_alert=Alarm_Beep_03.ogg
-ro.modversion=AmeriCan Android Shooteru CyanogenMod 7.2
+ro.modversion=AmeriCanAndroid Shooteru CyanogenMod 7.2
 ro.kernel.android.checkjni=1
 ro.setupwizard.mode=OPTIONAL
 dalvik.vm.dexopt-flags=m=y
