@@ -1,7 +1,6 @@
 # system.prop for shooteru
 #
 
-
 debug.fb.rgb565 = 0
 
 #C2D
@@ -49,7 +48,6 @@ ro.phone_storage = 0
 
 # Make rmt_storage start at init
 ro.emmc = 1
-
 
 #
 # ADDITIONAL_BUILD_PROPERTIES
