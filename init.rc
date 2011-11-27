@@ -20,8 +20,8 @@ loglevel 3
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
     export SD_EXT_DIRECTORY /sd-ext
-    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/core-junit.jar
-
+    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/filterfw.jar
+    
 # Backward compatibility
     symlink /system/etc /etc
     symlink /sys/kernel/debug /d
@@ -273,6 +273,7 @@ on boot
     chown media system /sys/android_camera2/htcwc
     chown media system /sys/android_camera/cam3Dmode
     chown radio system /sys/camera_led_status/led_ril_status
+    chown system system /sys/camera_led_status/led_wimax_status
     chown system system /sys/camera_led_status/led_hotspot_status
     chown media system /sys/android_camera/cam_mode    
     chown radio system /sys/class/cap_sense/sar/sleep
@@ -381,6 +382,7 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,393216,4096,8760,11680
     setprop net.tcp.buffersize.lte     4094,87380,196608,4096,16384,196608
     setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.wimax   4096,221184,524288,4096,16384,110208
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
