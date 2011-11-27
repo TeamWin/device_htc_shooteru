@@ -20,6 +20,7 @@ PRODUCT_COPY_FILES += \
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_COPY_FILES += \
+    device/htc/shooteru/init:root/init \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/init.rc:root/init.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
