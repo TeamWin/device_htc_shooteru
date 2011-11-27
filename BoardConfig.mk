@@ -63,8 +63,8 @@ TARGET_BOOTLOADER_BOARD_NAME := shooteru
 BOARD_USE_NEW_LIBRIL_HTC := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/shooteru/proprietary/libril.so
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
-BOARD_KERNEL_BASE := 0x40400000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=shooteru no_console_suspend=1
+BOARD_KERNEL_BASE := 0x48000000
 BOARD_PAGE_SIZE := 2048
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
