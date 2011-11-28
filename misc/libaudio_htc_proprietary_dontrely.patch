@@ -1,0 +1,185 @@
+From e0b55a19b2fc004915503ebdfd7c4c02c4264611 Mon Sep 17 00:00:00 2001
+From: Denis 'GNUtoo' Carikli <GNUtoo@no-log.org>
+Date: Thu, 23 Dec 2010 16:49:35 +0100
+Subject: [PATCH] libaudio: AudioHardware: don't depend on the proprietary libhtc_acoustic.so for routing
+
+/system/lib/libhtc_acoustic.so is proprietary(and not redistributable),
+  so we don't depend on it, but still we want audio routing
+
+This commit was inspired from a previous commit I made(for replicant 1.5):
+  http://gitorious.org/replicant/msm7k/commit/6d13023d634e54814ecc74b22f77de27f1b8ac2c
+
+Signed-off-by: Denis 'GNUtoo' Carikli <GNUtoo@no-log.org>
+---
+ libaudio/AudioHardware.cpp |  118 +++++++++++++++++++++++++++-----------------
+ 1 files changed, 73 insertions(+), 45 deletions(-)
+
+diff --git a/libaudio/AudioHardware.cpp b/libaudio/AudioHardware.cpp
+index 78b6a3e..af63e5a 100644
+--- a/libaudio/AudioHardware.cpp
++++ b/libaudio/AudioHardware.cpp
+@@ -43,6 +43,74 @@ const uint32_t AudioHardware::inputSamplingRates[] = {
+         8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000
+ };
+ // ----------------------------------------------------------------------------
++static int snd_get_endpoint(int cnt,msm_snd_endpoint * ept){
++     int fd;
++     int status;
++     fd = open("/dev/msm_snd",O_RDWR);
++     if (fd < 0) {
++	  LOGE("Cannot open msm_snd device");
++	  close(fd);
++	  return -1;
++     }
++     status = ioctl(fd,SND_GET_ENDPOINT, ept);
++     close(fd);
++     return status;
++}
++
++static int snd_get_num(){
++     int fd;
++     int status;
++     int mNumSndEndpoints;
++     fd = open("/dev/msm_snd",O_RDWR);
++     if (fd < 0) {
++	  LOGE("Cannot open msm_snd device");
++	  return -1;
++     }
++
++     if(ioctl(fd,SND_GET_NUM_ENDPOINTS,&mNumSndEndpoints)<0 ) {
++	  LOGE("get number of endpoints error");
++	  close(fd);
++	  return -1;
++     }
++     close(fd);
++     return mNumSndEndpoints;
++}
++
++static int msm72xx_enable_audpp (uint16_t enable_mask)
++{
++    int fd;
++
++
++    fd = open ("/dev/msm_pcm_ctl", O_RDWR);
++    if (fd < 0) {
++        LOGE ("Cannot open audio device");
++        return -1;
++    }
++
++    if (enable_mask & ADRC_ENABLE) {
++        enable_mask &= ~ADRC_ENABLE;
++    }
++    if (enable_mask & EQ_ENABLE) {
++        enable_mask &= ~EQ_ENABLE;
++    }
++    if (enable_mask & RX_IIR_ENABLE) {
++        enable_mask &= ~RX_IIR_ENABLE;
++    }
++
++    printf ("msm72xx_enable_audpp: 0x%04x", enable_mask);
++    if (ioctl (fd, AUDIO_ENABLE_AUDPP, &enable_mask) < 0) {
++	LOGE ("enable audpp error");
++	close (fd);
++	return -1;
++    }
++
++    close (fd);
++    return 0;
++}
++
++static int set_acoustic_parameters(){
++     return 0;
++}
+ 
+ AudioHardware::AudioHardware() :
+     mInit(false), mMicMute(true), mBluetoothNrec(true), mBluetoothId(0),
+@@ -63,38 +131,10 @@ AudioHardware::AudioHardware() :
+     SND_DEVICE_BT_EC_OFF(-1)
+ {
+ 
+-    int (*snd_get_num)();
+-    int (*snd_get_endpoint)(int, msm_snd_endpoint *);
+-    int (*set_acoustic_parameters)();
+-
+     struct msm_snd_endpoint *ept;
+ 
+-    acoustic = ::dlopen("/system/lib/libhtc_acoustic.so", RTLD_NOW);
+-    if (acoustic == NULL ) {
+-        LOGE("Could not open libhtc_acoustic.so");
+-        /* this is not really an error on non-htc devices... */
+-        mNumSndEndpoints = 0;
+-        mInit = true;
+-        return;
+-    }
+-
+-    set_acoustic_parameters = (int (*)(void))::dlsym(acoustic, "set_acoustic_parameters");
+-    if ((*set_acoustic_parameters) == 0 ) {
+-        LOGE("Could not open set_acoustic_parameters()");
+-        return;
+-    }
+-
+-    int rc = set_acoustic_parameters();
+-    if (rc < 0) {
+-        LOGE("Could not set acoustic parameters to share memory: %d", rc);
+-//        return;
+-    }
+-
+-    snd_get_num = (int (*)(void))::dlsym(acoustic, "snd_get_num_endpoints");
+-    if ((*snd_get_num) == 0 ) {
+-        LOGE("Could not open snd_get_num()");
+-//        return;
+-    }
++    LOGI("Not using the proprietary libhtc_acoustic library");
++    mInit = true;
+ 
+     mNumSndEndpoints = snd_get_num();
+     LOGD("mNumSndEndpoints = %d", mNumSndEndpoints);
+@@ -102,11 +142,6 @@ AudioHardware::AudioHardware() :
+     mInit = true;
+     LOGV("constructed %d SND endpoints)", mNumSndEndpoints);
+     ept = mSndEndpoints;
+-    snd_get_endpoint = (int (*)(int, msm_snd_endpoint *))::dlsym(acoustic, "snd_get_endpoint");
+-    if ((*snd_get_endpoint) == 0 ) {
+-        LOGE("Could not open snd_get_endpoint()");
+-        return;
+-    }
+ 
+     for (int cnt = 0; cnt < mNumSndEndpoints; cnt++, ept++) {
+         ept->id = cnt;
+@@ -488,17 +523,14 @@ status_t AudioHardware::doAudioRouteOrMute(uint32_t device)
+                               mMode != AudioSystem::MODE_IN_CALL, mMicMute);
+ }
+ 
++
++
+ status_t AudioHardware::doRouting()
+ {
+-    /* currently this code doesn't work without the htc libacoustic */
+-    if (!acoustic)
+-        return 0;
+ 
+     Mutex::Autolock lock(mLock);
+     uint32_t outputDevices = mOutput->devices();
+     status_t ret = NO_ERROR;
+-    int (*msm72xx_enable_audpp)(int);
+-    msm72xx_enable_audpp = (int (*)(int))::dlsym(acoustic, "msm72xx_enable_audpp");
+     int audProcess = (ADRC_DISABLE | EQ_DISABLE | RX_IIR_DISABLE);
+     AudioStreamInMSM72xx *input = getActiveInput_l();
+     uint32_t inputDevice = (input == NULL) ? 0 : input->devices();
+@@ -576,11 +608,7 @@ status_t AudioHardware::doRouting()
+ 
+     if (sndDevice != -1 && sndDevice != mCurSndDevice) {
+         ret = doAudioRouteOrMute(sndDevice);
+-        if ((*msm72xx_enable_audpp) == 0 ) {
+-            LOGE("Could not open msm72xx_enable_audpp()");
+-        } else {
+-            msm72xx_enable_audpp(audProcess);
+-        }
++        msm72xx_enable_audpp(audProcess);
+         mCurSndDevice = sndDevice;
+     }
+ 
+-- 
+1.6.1
+
+
