@@ -25,6 +25,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/init.rc:root/init.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
 
+#Add touchscreen config file
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc
+
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
