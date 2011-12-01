@@ -23,7 +23,7 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/init:root/init \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/init.rc:root/init.rc \
-    device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
+    device/htc/shooteru/ueventd.shooter_u.rc:root/ueventd.shooter_u.rc
 
 #Add touchscreen config file
 PRODUCT_COPY_FILES += \
@@ -100,7 +100,13 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
     device/htc/shooteru/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/htc/shooteru/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
-    
+
+
+# Hardware Acceleration
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/prebuilt/libC2D2.so:system/lib/libC2D2.so \
+    device/htc/shooteru/prebuilt/libOpenVG.so:system/lib/libOpenVG.so
+
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/AIC3254_REG.csv:system/etc/AIC3254_REG.csv \
