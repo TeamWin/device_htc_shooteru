@@ -66,11 +66,9 @@ PRODUCT_COPY_FILES += \
 
 #PRODUCT_PACKAGES += \
 #    gps.shooteru \
-#    librs_jni \
 #    gralloc.msm8660 \
 #    copybit.msm8660 \
 #    overlay.default \
-#    com.android.future.usb.accessory
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -100,7 +98,6 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
     device/htc/shooteru/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/htc/shooteru/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
-
 
 # Hardware Acceleration
 PRODUCT_COPY_FILES += \
@@ -169,7 +166,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
-
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/htc/shooteru/kernel
