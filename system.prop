@@ -98,6 +98,7 @@ ro.config.ringtone=Playa.ogg
 ro.config.notification_sound=Cricket.ogg
 ro.config.alarm_alert=Alarm_Beep_03.ogg
 ro.modversion=AmeriCanAndroid Shooteru CyanogenMod 7.2
+ro.product.multi_touch_enabled=true
 ro.kernel.android.checkjni=1
 ro.setupwizard.mode=OPTIONAL
 dalvik.vm.dexopt-flags=m=y
