@@ -136,13 +136,11 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
 
-# Wifi Module
-PRODUCT_COPY_FILES += \
-    device/htc/shooteru/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
-    device/htc/shooteru/modules/kineto_gan.ko:system/lib/modules/kineto_gan.ko \
-    device/htc/shooteru/modules/nls_utf8.ko:system/lib/modules/nls_utf8.ko  \
-    device/htc/shooteru/modules/tun.ko:system/lib/modules/tun.ko \
-    device/htc/shooteru/modules/cifs.ko:system/lib/modules/cifs.ko \
+# Kernel Modules
+PRODUCT_COPY_FILES += $(shell \
+    find device/htc/shooteru/modules -name '*.ko' \
+    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
+    | tr '\n' ' ')
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
