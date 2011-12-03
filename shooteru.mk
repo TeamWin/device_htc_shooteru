@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
-#    libaudio \
+    libaudio \
     com.android.future.usb.accessory
 
 # Keylayouts
@@ -103,6 +103,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/prebuilt/libC2D2.so:system/lib/libC2D2.so \
     device/htc/shooteru/prebuilt/libOpenVG.so:system/lib/libOpenVG.so
+
+# Working libaudio
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
