@@ -1,4 +1,4 @@
-// 05.23(Youyu Lin). SHR#U first version for txt format
+// 05.23(Youyu Lin). SHRU first version for txt format
 // 06.14(Youyu Lin). modify A16 R51 C0->80 for only LADC
 Uplink Path
 A00,Initial

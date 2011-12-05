@@ -1,4 +1,4 @@
-// 05.23(Youyu Lin). SHR#U first version for txt format
+// 05.23(Youyu Lin). SHRU first version for txt format
 // 06.14(Youyu Lin). HTC Recording	A16			0x51, C0->80 for only LADC
 // 06.15(Youyu Lin). 3rdAP Recordin A19, A20 	0x3B,0x3C	3A->36 for VR, 3rd AP -15dBFS
 // 06.23(Youyu Lin). FMSPK			B21 		0x0C,0x0D	08->09 =1 dB P=432mW

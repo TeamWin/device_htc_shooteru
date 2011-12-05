@@ -1,4 +1,4 @@
-#TPA2051 SHR_U_20110627,,,,,,,,,
+#TPA2051 SHRU_20110627,,,,,,,,,
 #mode/kind/i2c_cmds[7],,,,,,,,,
 #kind = 0:spk, kind = 1:HEADSET, kind = 2:ring ,kind = 3:rev,kin=4 : 0ff,,,,,
 0,4,0x00,0x90,0x00,0x00,0x00,0x00,0x00,#TPA2051_MODE_OFF

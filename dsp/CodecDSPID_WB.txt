@@ -1,4 +1,4 @@
-Header, PYD_soundeffet_2011_0328
+Header, SHRU_soundeffet_2011_0328
 ## Group for phone ##
 Phone_Default,/system/etc/soundimage/Sound_Phone_Original_HP_WB.txt
 Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Phone_Original_REC_WB.txt
