@@ -23,32 +23,22 @@ ro.ril.disable.fd.plmn.prefix=23402,23410,23411
 ro.ril.enable.sdr=1
 ro.ril.enable.amr.wideband=0
 
-# Misc Network Settings
+# ace RF team request
 ro.ril.enable.dtm=0
 ro.ril.gprsclass=12
+ro.ril.hsdpa.category=10
+ro.ril.hsupa.category=6
 ro.ril.hsxpa=2
-ro.ril.hsdpa.category=28 #Cat 28=84.4 Mbit/s
-ro.ril.hsupa.category=9
-ro.ril.htcmaskw1=14449
-ro.ril.htcmaskw1.bitmask=4294967295
-ro.ril.enable.a53=1
-ro.ril.hep=1
-ro.ril.disable.power.collapse=1 #For HSDPA low throughput
-ro.ril.enable.garbage.filter=0  # Enable mobile network for gsm
-ro.telephony.default_network=0  # Default network type. 0 => WCDMA preferred.
 
-# ro.ril.enable.dtm : Only set this to 1 if your network allows simultaneous
-# transfer of Circuit switched (CS) voice and Packet switched
-# (PS) data over the same radio channel (ARFCN). 
-ro.ril.enable.dtm = 1
+# enable mobile network for gsm
+ro.ril.enable.garbage.filter=0
+
+# Default network type.
+# 0 => WCDMA preferred.
+ro.telephony.default_network=0
 
 wifi.interface=eth0
 wifi.supplicant_scan_interval=15
-
-# ro.ril.gprsclass : inidcates GPRS class of target network :
-# Class 12 : 5 slots : 32 - 48 kbps upload / 32 - 48 kbps download
-ro.ril.gprsclass = 12
-ro.ril.def.agps.mode=2 #For the default value of agps
 
 mobiledata.interfaces=rmnet0,eth0,gprs,ppp0,wifi
 
@@ -59,13 +49,15 @@ settings.display.autobacklight=1
 # This is a 16.16 fixed point number
 ro.opengles.version = 131072
 
-# Render UI with CPU instead of CPU
-debug.sf.hw=1
-video.accelerate.hw=1
-
 # This is a high density device with more memory, so larger vm heaps for it.
 # Change to 32m, due to 2.3.3 GB already change to 32m
 dalvik.vm.heapsize=48m
+
+# For the default value of agps
+ro.ril.def.agps.mode = 2
+
+# For HSDPA low throughput
+ro.ril.disable.power.collapse=1
 
 # board has 3D panel
 persist.user.panel3D = 1
@@ -79,9 +71,13 @@ ro.phone_storage = 0
 # Make rmt_storage start at init
 ro.emmc = 1
 
+# Render UI with CPU instead of CPU
+debug.sf.hw=1
+video.accelerate.hw=1
+
 # release Bluetooth HW/SW information
 ro.bt.chipset  = Broadcom BCM4329-B1
-ro.bt.stack	= Broadcom BTL-A
+ro.bt.stack  = Broadcom BTL-A
 ro.bt.stack.version	= 2.0.50.032
 #0x10000010010100101000011 represent bt profile list
 ro.bt.profiles	= 4270403
@@ -109,9 +105,6 @@ ro.product.wifi = 802.11 b/g/n
 ro.media.enc.jpeg.quality=100
 ro.media.dec.jpeg.memcap=8000000
 ro.media.enc.hprof.vid.bps=8000000
-
-# Render UI with GPU
-debug.sf.hw=1
 
 # Increase overall touch responsiveness
 windowsmgr.max_events_per_sec=150
