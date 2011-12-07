@@ -78,6 +78,8 @@ TARGET_HARDWARE_3D := true
 # Define Prebuilt kernel locations
 TARGET_PREBUILT_KERNEL := device/htc/shooteru/kernel
 
+BOARD_NEEDS_CUTILS_LOG := true
+
 # cat /proc/emmc
 # dev:        size     erasesize name
 # mmcblk0p31: 000ffa00 00000200 "misc"
