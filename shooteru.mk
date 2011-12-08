@@ -95,7 +95,7 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
     device/htc/shooteru/firmware/BCM4329B1_002.002.023.0831.0841.hcd:system/etc/firmware/BCM4329B1_002.002.023.0831.0841.hcd \
     device/htc/shooteru/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
-    device/htc/shooteru/firmware/default_mfg_bak.acdb:system/etc/firmware/default_rogers_bak.acdb \
+    device/htc/shooteru/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb \
     device/htc/shooteru/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
     device/htc/shooteru/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
     device/htc/shooteru/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
