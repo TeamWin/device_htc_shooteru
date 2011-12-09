@@ -114,8 +114,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so
 
-# Media Profiles
+# Misc Prebuilt Files
 PRODUCT_COPY_FILES += \
+    device/htc/shooteru/prebuilt/init.post_boot.sh:system/etc/init.post_boot.sh \
     device/htc/shooteru/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 # Audio DSP Profiles
