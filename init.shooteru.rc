@@ -137,15 +137,6 @@ on boot
     # Load kineto_gan.ko while booting
 	insmod /system/lib/modules/kineto_gan.ko
 
-    # Discretix DRM
-	mkdir /data/DxDrm
-	mkdir /data/DxDrm/fuse
-	mkdir /data/DxDrm/Credentials
-	mkdir /data/DxDrm/Credentials/PlayReady
-	chmod 555 /data/DxDrm
-	copy /etc/DxPrdyProvisionObf.pkg /data/DxDrm/Credentials/PlayReady/DxPrdyProvisionObf.pkg
-	copy /etc/DxDrmConfig_Server.txt /data/DxDrm/DxDrmConfig_Server.txt
-
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh
     oneshot
@@ -252,7 +243,6 @@ service zchgd_onmode /system/bin/zchgd -onmode
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
     stop netmgrd
-# - SSD_RIL: Otis: from Qualcomm QMI and Netmgrd
 
 # for vnc
 service androidvncserver /system/bin/androidvncserver -a
