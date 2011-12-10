@@ -112,7 +112,10 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt audio
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so
+    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so \
+    device/htc/shooteru/prebuilt/libaudcal.so:system/lib/libaudcal.so \
+    device/htc/shooteru/prebuilt/libaudcal_nel.so:system/lib/libaudcal_nel.so \
+    device/htc/shooteru/prebuilt/libaudcalwb.so:system/lib/libaudcalwb.so
 
 # Misc Prebuilt Files
 PRODUCT_COPY_FILES += \
