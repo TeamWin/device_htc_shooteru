@@ -56,7 +56,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.networklocation=1 \
     ro.setupwizard.enable_bypass=1 \
     dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y
+    dalvik.vm.dexopt-flags=m=y \
     ro.opengles.version=131072
 
 # Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
@@ -105,17 +105,9 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/htc/shooteru/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
 
-# Hardware Acceleration
-PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/libC2D2.so:system/lib/libC2D2.so \
-    device/htc/shooteru/prebuilt/libOpenVG.so:system/lib/libOpenVG.so
-
 # Prebuilt audio
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so \
-    device/htc/shooteru/prebuilt/libaudcal.so:system/lib/libaudcal.so \
-    device/htc/shooteru/prebuilt/libaudcal_nel.so:system/lib/libaudcal_nel.so \
-    device/htc/shooteru/prebuilt/libaudcalwb.so:system/lib/libaudcalwb.so
+    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so
 
 # Misc Prebuilt Files
 PRODUCT_COPY_FILES += \
