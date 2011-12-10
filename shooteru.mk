@@ -121,7 +121,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/prebuilt/adreno_config.txt:system/etc/adreno_config.txt \
     device/htc/shooteru/prebuilt/init.post_boot.sh:system/etc/init.post_boot.sh \
-    device/htc/shooteru/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
+    device/htc/shooteru/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
+    device/htc/shooteru/prebuilt/libcameraSP.so:system/lib/libcameraSP.sp \
+    device/htc/shooteru/prebuilt/libcameraLN.so:system/lib/libcameraLN.so
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
