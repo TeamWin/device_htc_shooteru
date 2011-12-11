@@ -73,7 +73,6 @@ ro.emmc = 1
 
 # Render UI with CPU instead of CPU
 debug.sf.hw=1
-video.accelerate.hw=1
 
 # release Bluetooth HW/SW information
 ro.bt.chipset  = Broadcom BCM4329-B1
