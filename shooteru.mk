@@ -160,7 +160,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # This is a high density device with more memory, so larger vm heaps for it.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapsize=48m
+    dalvik.vm.heapsize=64m
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-data-only=1
