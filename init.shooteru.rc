@@ -76,6 +76,8 @@ on boot
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
 	chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
 	chmod 0660                /sys/class/rfkill/rfkill0/state
+	chown bluetooth bluetooth /dev/ttyHS0    
+	chmod 0770 /dev/ttyHS0
 
     # bluetooth MAC address programming
 	chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddr
@@ -165,7 +167,8 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     oneshot
     keycodes 114 115
 
-service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd /dev/ttyHS0
+service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci \
+    --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0589.0632.hcd /dev/ttyHS0
     user bluetooth
     group bluetooth net_bt_admin
     disabled

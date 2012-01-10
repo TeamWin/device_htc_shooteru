@@ -23,11 +23,13 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/init:root/init \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/init.rc:root/init.rc \
+    device/htc/shooteru/ueventd.shooter_u.rc:root/ueventd.shooteru.rc \
     device/htc/shooteru/ueventd.shooter_u.rc:root/ueventd.shooter_u.rc
 
-#Add touchscreen config file
+#Add touchscreen config files
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc
+    device/htc/shooteru/prebuilt/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/shooteru/prebuilt/usr/idc/shooteru-keypad.idc:system/usr/idc/shooteru-keypad.idc
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -63,19 +65,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=20
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
-
 # gsm config xml file
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
 #PRODUCT_PACKAGES += \
 #    gps.shooteru \
-#    gralloc.msm8660 \
-#    copybit.msm8660 \
 #    overlay.default \
 
 PRODUCT_PACKAGES += \
+    gralloc.msm8660 \
+    copybit.msm8660 \
     librs_jni \
     libOmxCore \
     libOmxVenc \
@@ -83,17 +83,23 @@ PRODUCT_PACKAGES += \
     libaudio \
     com.android.future.usb.accessory
 
+# Misc
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.config.disable_hw_accel=true \
+    persist.service.adb.enable=1
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    device/htc/shooteru/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/htc/shooteru/keychars/shooteru-keypad.kcm.bin:system/usr/keychars/shooteru-keypad.kcm.bin \
     device/htc/shooteru/keychars/BT_HID.kcm.bin:system/usr/keychars/BT_HID.kcm.bin \
+    device/htc/shooteru/keychars/shooteru-keypad.kcm.bin:system/usr/keychars/shooteru-keypad.kcm.bin \
+    device/htc/shooteru/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+    device/htc/shooteru/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
+    device/htc/shooteru/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+    device/htc/shooteru/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/shooteru/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
     device/htc/shooteru/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
     device/htc/shooteru/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/htc/shooteru/keylayout/shooteru-keypad.kl:system/usr/keylayout/shooteru-keypad.kl \
-    device/htc/shooteru/keylayout/BT_HID.kl:system/usr/keylayout/BT_HID.kl \
-    device/htc/shooteru/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
+    device/htc/shooteru/keylayout/shooteru-keypad.kl:system/usr/keylayout/shooteru-keypad.kl
 
 # Firmware
 PRODUCT_COPY_FILES += \
@@ -107,15 +113,19 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt audio
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/libaudio.so:system/lib/libaudio.so
+    device/htc/shooteru/prebuilt/lib/libaudio.so:system/lib/libaudio.so \
+    device/htc/shooteru/prebuilt/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+    device/htc/shooteru/prebuilt/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+    device/htc/shooteru/prebuilt/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
 
 # Misc Prebuilt Files
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/adreno_config.txt:system/etc/adreno_config.txt \
-    device/htc/shooteru/prebuilt/init.post_boot.sh:system/etc/init.post_boot.sh \
-    device/htc/shooteru/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/shooteru/prebuilt/libcameraSP.so:system/lib/libcameraSP.sp \
-    device/htc/shooteru/prebuilt/libcameraLN.so:system/lib/libcameraLN.so
+    device/htc/shooteru/prebuilt/etc/adreno_config.txt:system/etc/adreno_config.txt \
+    device/htc/shooteru/prebuilt/etc/init.post_boot.sh:system/etc/init.post_boot.sh \
+    device/htc/shooteru/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/htc/shooteru/prebuilt/lib/libcameraSP.so:system/lib/libcameraSP.sp \
+    device/htc/shooteru/prebuilt/lib/libcameraLN.so:system/lib/libcameraLN.so \
+    device/htc/shooteru/prebuilt/lib/libcryp98.so:system/lib/libcryp98.so
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \

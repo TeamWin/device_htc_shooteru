@@ -41,14 +41,14 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Define egl.cfg location
-BOARD_EGL_CFG := device/htc/shooteru/egl.cfg
+BOARD_EGL_CFG := device/htc/shooteru/prebuilt/egl.cfg
 
+BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
 #BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
 BOARD_CAMERA_USE_GETBUFFERINFO := true
-
 
 #BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 BOARD_USES_ADRENO_200 := true
