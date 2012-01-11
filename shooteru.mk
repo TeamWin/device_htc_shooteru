@@ -113,10 +113,7 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt audio
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/lib/libaudio.so:system/lib/libaudio.so \
-    device/htc/shooteru/prebuilt/lib/hw/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
-    device/htc/shooteru/prebuilt/lib/hw/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
-    device/htc/shooteru/prebuilt/lib/hw/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
+    device/htc/shooteru/prebuilt/lib/libaudio.so:system/lib/libaudio.so
 
 # Misc Prebuilt Files
 PRODUCT_COPY_FILES += \
