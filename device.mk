@@ -17,6 +17,10 @@
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/prebuilt/kernel:kernel \
+    device/htc/shooteru/fstab.shooteru:recovery/root/fstab.shooteru
+
 ## New Adreno Drivers
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \

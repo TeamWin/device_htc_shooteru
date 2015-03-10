@@ -68,7 +68,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144
 # Kernel Source
 TARGET_KERNEL_CONFIG := shooter_u_defconfig
 
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+#TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
@@ -110,3 +110,14 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 
 # Custom LUN File Path
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
+
+#TWRP
+DEVICE_RESOLUTION := 540x960
+TW_INCLUDE_DUMLOCK := true
+TARGET_RECOVERY_INITRC := device/htc/shooteru/init.recovery.rc
+TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.590337/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+#TW_INCLUDE_JB_CRYPTO := true
+
+TARGET_USERIMAGES_USE_F2FS := true
+
